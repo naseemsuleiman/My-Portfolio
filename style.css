@@ -171,3 +171,31 @@ animation-delay: calc(.1s *var(--i));
     transform: translateY(0%);
 }
 }
+
+
+
+  .home-info p {
+    font-size: 1.2rem;
+    align-items: left;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    justify-content: left;
+  }
+
+  .home-info ul {
+    margin-left: 1px;
+    margin-top: 15px;
+  }
+
+  .home-info ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    list-style: none;
+  }
+
+  .home-info strong {
+    color: #4CAF50;
+    justify-content: left;
+  }
+
+ 

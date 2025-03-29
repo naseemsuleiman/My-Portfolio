@@ -6,100 +6,103 @@
     <title>Education</title>
     <link rel="stylesheet" href="style.css" />
     <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         min-height: 100vh;
-        background-image: url(School\ Classroom\ With\ Chalkboard\ And\ Desk\ In\ 3d\ Rendering\ Background\,\ Classroom\,\ Classroom\ Board\,\ Class\ Background\ Background\ Image\ And\ Wallpaper\ for\ Free\ Download.jpg);
+        background-color: #ffc0cb;
         background-repeat: no-repeat;
         background-size: cover;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
       }
-      .navbar ul li a {
-        color: black;
+      .section {
+        width: 80%;
+        margin-top: 20px;
       }
-
-      .here {
-        width: 88%;
-        margin: auto;
-        padding: 30px 0px;
-      }
-
       article h1 {
-        font-size: 50px;
-        font-weight: 500;
+        font-size: 3rem;
+        font-weight: bold;
         text-transform: uppercase;
-        color: black;
-        margin-top: 40px;
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 20px;
       }
-
       article h1::after {
         content: "";
-        height: 3px;
-        width: 225px;
-        background-color: palevioletred;
+        height: 4px;
+        width: 100px;
+        background-color: #ff69b4;
         display: block;
-        margin: auto;
+        margin: 10px auto;
+        border-radius: 2px;
       }
-      content {
-        font-size: 20px;
-        color: black;
-        line-height: 1.5;
+      .content {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
-
-      article h5 {
-        text-transform: uppercase;
-        font-size: 32px;
-        font-weight: 500;
-        margin-top: 30px;
-        color: black;
+      article h2 {
+        color: #ff1493;
+        margin-top: 20px;
       }
-      h2 {
-        color: white;
-        text-underline-offset: palevioletred;
+      ul {
+        list-style: none;
+        padding-left: 20px;
+      }
+      ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
       }
     </style>
   </head>
   <body>
     <nav class="navbar">
       <ul>
-        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="education.html">Education</a></li>
+        <li><a href="education.html" class="active">Education</a></li>
         <li><a href="interests.html">Interests</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-    </nav>
-    <br />
-    <br />
-    <br />
-    <br />
+    </nav><br><br><br><br><br>
 
     <div class="section">
-      <div class="hero">
-        <article>
-          <h1>Education</h1>
-          <br />
-          <br />
-          <br />
-          <br />
+      <article>
+        <h1>Education</h1>
+        <div class="content">
+          <h2>Formal Education</h2>
+          <ul>
+            <li><b>Frontend Development Course</b> - XYZ College (2021)</li>
+            <li><b>High School Diploma</b> - ABC High School (2013 - 2016)</li>
+          </ul>
 
-          <content>
-            <h2><u>Formal Education</u></h2>
-            <ol type="1">
-              <li>
-                <b>Online and Certification courses</b>:Software Development
-              </li>
-              <br />
-              <li>
-                <b>Self-Study and Personal Projects:</b>Developed a personal
-                Portfolio Website using html and CSS
-              </li>
-            </ol>
-            <br />
-            <br />
-            <h2><u>Skills and Tools</u></h2>
-<p><b>1.Programming Languages:</b>HTML and CSS</p>
-          </content>
-        </article>
-      </div>
+          <h2>Certifications</h2>
+          <ul>
+            <li><b>Frontend Development</b> - XYZ College</li>
+          </ul>
+
+          <h2>Personal Projects</h2>
+          <ul>
+            <li><b>Grand Oasis Hotel Website</b> - Built using HTML and CSS</li>
+            <li><b>Trivia Game</b> - Developed with React</li>
+          </ul>
+
+          <h2>Skills and Tools</h2>
+          <ul>
+            <li><b>Programming Languages:</b> HTML, CSS, JavaScript</li>
+            <li><b>Frameworks:</b> React</li>
+            <li><b>Tools:</b> Git, GitHub, VSCode</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </body>
 </html>
