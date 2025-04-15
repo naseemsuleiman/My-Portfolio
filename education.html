@@ -3,106 +3,591 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Education</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="Naseem Suleiman's Education - Professional Frontend Developer">
+    <title>Education | Naseem Suleiman - Frontend Developer</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
+      :root {
+        --primary-color: #2a9d8f;
+        --secondary-color: #264653;
+        --accent-color: #e9c46a;
+        --dark-color: #212529;
+        --light-color: #f8f9fa;
+        --text-color: #495057;
+        --text-light: #6c757d;
+        --card-bg: rgba(255, 255, 255, 0.98);
+        --glass-effect: rgba(255, 255, 255, 0.15);
+        --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      
       * {
-        box-sizing: border-box;
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
       }
+      
       body {
+        background-color: var(--light-color);
+        color: var(--text-color);
+        line-height: 1.7;
         min-height: 100vh;
-        background-color: #ffc0cb;
-        background-repeat: no-repeat;
-        background-size: cover;
-        font-family: Arial, sans-serif;
+      }
+      
+      /* Navbar - Matching Homepage */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 5%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        transition: var(--transition);
+      }
+      
+      .navbar.scrolled {
+        padding: 15px 5%;
+        box-shadow: var(--shadow-md);
+      }
+      
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      
+      .logo-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+      }
+      
+      .logo-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+      
+      .nav-links li {
+        margin-left: 30px;
+        position: relative;
+      }
+      
+      .nav-links li a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 1rem;
+        transition: var(--transition);
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 20px;
       }
-      .section {
-        width: 80%;
-        margin-top: 20px;
+      
+      .nav-links li a .nav-icon {
+        display: none;
       }
-      article h1 {
-        font-size: 3rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: #2c3e50;
-        text-align: center;
-        margin-bottom: 20px;
+      
+      .nav-links li a:hover {
+        color: var(--primary-color);
       }
-      article h1::after {
-        content: "";
-        height: 4px;
-        width: 100px;
-        background-color: #ff69b4;
+      
+      .nav-links li a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        bottom: -5px;
+        left: 0;
+        transition: var(--transition);
+      }
+      
+      .nav-links li a:hover::after {
+        width: 100%;
+      }
+      
+      .nav-links li.active a {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+      
+      .nav-links li.active a::after {
+        width: 100%;
+      }
+      
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      
+      .menu-toggle span {
         display: block;
-        margin: 10px auto;
+        height: 3px;
+        width: 100%;
+        background: var(--primary-color);
+        border-radius: 3px;
+        transition: var(--transition);
+      }
+      
+      .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+      
+      /* Education Section */
+      .education-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 150px 5% 80px;
+      }
+      
+      .education-section {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 60px;
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition);
+      }
+      
+      .education-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+      
+      .education-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      
+      .education-header h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .education-header h1::after {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
         border-radius: 2px;
       }
-      .content {
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      
+      .education-header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
       }
-      article h2 {
-        color: #ff1493;
-        margin-top: 20px;
+      
+      .education-category {
+        margin-bottom: 40px;
       }
-      ul {
+      
+      .education-category h2 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(42, 157, 143, 0.2);
+        display: flex;
+        align-items: center;
+      }
+      
+      .education-category h2 i {
+        margin-right: 15px;
+        font-size: 1.5rem;
+      }
+      
+      .education-list {
         list-style: none;
-        padding-left: 20px;
       }
-      ul li {
-        padding: 10px 0;
-        border-bottom: 1px solid #ddd;
+      
+      .education-item {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        border-left: 4px solid var(--primary-color);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .education-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+      }
+      
+      .education-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(42, 157, 143, 0.05), rgba(42, 157, 143, 0.02));
+        z-index: -1;
+      }
+      
+      .education-item h3 {
+        font-size: 1.3rem;
+        color: var(--dark-color);
+        margin-bottom: 8px;
+      }
+      
+      .education-item .institution {
+        color: var(--secondary-color);
+        font-weight: 500;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .education-item .institution i {
+        margin-right: 8px;
+        font-size: 1rem;
+      }
+      
+      .education-item .date {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .education-item .date i {
+        margin-right: 8px;
+        font-size: 0.9rem;
+      }
+      
+      .education-item .description {
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+      
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      
+      .skill-tag {
+        background: rgba(42, 157, 143, 0.1);
+        color: var(--secondary-color);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .education-header h1 {
+          font-size: 2.5rem;
+        }
+        
+        .education-section {
+          padding: 40px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 20px 5%;
+        }
+        
+        .menu-toggle {
+          display: flex;
+        }
+        
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          max-width: 300px;
+          height: 100vh;
+          background: var(--card-bg);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          transition: var(--transition);
+          z-index: 1000;
+        }
+        
+        .nav-links.active {
+          right: 0;
+        }
+        
+        .nav-links li {
+          margin: 15px 0;
+        }
+        
+        .nav-links li a {
+          flex-direction: row;
+          gap: 10px;
+        }
+        
+        .nav-links li a .nav-icon {
+          display: block;
+        }
+        
+        .education-header h1 {
+          font-size: 2.2rem;
+        }
+        
+        .education-section {
+          padding: 30px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .education-header h1 {
+          font-size: 1.8rem;
+        }
+        
+        .education-section {
+          padding: 25px 20px;
+        }
+        
+        .education-item {
+          padding: 20px;
+        }
       }
     </style>
   </head>
+
   <body>
     <nav class="navbar">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="education.html" class="active">Education</a></li>
-        <li><a href="interests.html">Interests</a></li>
-        <li><a href="contact.html">Contact</a></li>
+      <a href="index.html" class="logo">
+        <i class='bx bx-code-alt logo-icon'></i>
+        <span class="logo-text">Naseem</span>
+      </a>
+      
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="index.html"><i class='bx bx-home nav-icon'></i> Home</a></li>
+        <li><a href="about.html"><i class='bx bx-user nav-icon'></i> About</a></li>
+        <li class="active"><a href="education.html"><i class='bx bx-book nav-icon'></i> Education</a></li>
+        <li><a href="interests.html"><i class='bx bx-heart nav-icon'></i> Interests</a></li>
+        <li><a href="contact.html"><i class='bx bx-envelope nav-icon'></i> Contact</a></li>
       </ul>
-    </nav><br><br><br><br><br>
+    </nav>
 
-    <div class="section">
-      <article>
-        <h1>Education</h1>
-        <div class="content">
-          <h2>Formal Education</h2>
-          <ul>
-            <li><b>Frontend Development Course</b> -Zindua  College (2024)</li>
-            <li><b>High School Diploma</b> - ABC High School (2021 - 2024)</li>
-          </ul>
-
-          <h2>Certifications</h2>
-          <ul>
-            <li><b>Frontend Development</b> - Zindua College</li>
-          </ul>
-
-          <h2>Personal Projects</h2>
-          <ul>
-            <li><b>Grand Oasis Hotel Website</b> - Built using HTML and CSS</li>
-            <li><b>Trivia Game</b> - Developed with React</li>
-          </ul>
-
-          <h2>Skills and Tools</h2>
-          <ul>
-            <li><b>Programming Languages:</b> HTML, CSS, JavaScript</li>
-            <li><b>Frameworks:</b> React</li>
-            <li><b>Tools:</b> Git, GitHub, VSCode</li>
+    <div class="education-container">
+      <div class="education-section animate__animated animate__fadeIn">
+        <div class="education-header">
+          <h1 class="animate__animated animate__fadeIn animate__delay-1s">My Education</h1>
+          <p class="animate__animated animate__fadeIn animate__delay-2s">Academic background and professional development</p>
+        </div>
+        
+        <div class="education-category animate__animated animate__fadeIn animate__delay-3s">
+          <h2><i class='bx bxs-graduation'></i> Formal Education</h2>
+          <ul class="education-list">
+            <li class="education-item">
+              <h3>Frontend Development Course</h3>
+              <div class="institution"><i class='bx bxs-school'></i> Zindua College</div>
+              <div class="date"><i class='bx bx-calendar'></i> 2024</div>
+              <div class="description">
+                Comprehensive training in modern frontend development technologies and best practices.
+              </div>
+              <div class="skills-list">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">React</span>
+              </div>
+            </li>
+            
+            <li class="education-item">
+              <h3>High School </h3>
+              <div class="institution"><i class='bx bxs-school'></i>  Moi Girls Isinya</div>
+              <div class="date"><i class='bx bx-calendar'></i> 2021 - 2024</div>
+              <div class="description">
+                Completed high school education.
+              </div>
+            </li>
           </ul>
         </div>
-      </article>
+        
+        <div class="education-category animate__animated animate__fadeIn animate__delay-4s">
+          <h2><i class='bx bxs-certification'></i> Certifications</h2>
+          <ul class="education-list">
+            <li class="education-item">
+              <h3>Frontend Development Certification</h3>
+              <div class="institution"><i class='bx bxs-certificate'></i> Zindua College</div>
+              <div class="date"><i class='bx bx-calendar'></i> 2024</div>
+              <div class="description">
+                Certified in frontend web development with hands-on project experience.
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="education-category animate__animated animate__fadeIn animate__delay-5s">
+          <h2><i class='bx bx-code-alt'></i> Personal Projects</h2>
+          <ul class="education-list">
+            <li class="education-item">
+              <h3>Grand Oasis Hotel Website</h3>
+              <div class="institution"><i class='bx bx-laptop'></i> Personal Project</div>
+              <div class="description">
+                Designed and developed a responsive hotel website using HTML and CSS with modern UI/UX principles.
+              </div>
+              <div class="skills-list">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">Responsive Design</span>
+              </div>
+            </li>
+            
+            <li class="education-item">
+              <h3>Trivia Game</h3>
+              <div class="institution"><i class='bx bx-laptop'></i> Personal Project</div>
+              <div class="description">
+                Built an interactive trivia game application using React with state management and API integration.
+              </div>
+              <div class="skills-list">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">API Integration</span>
+              </div>
+            </li>
+
+            <li class="education-item">
+              <h3>Inkify - Blog Website</h3>
+              <div class="institution"><i class='bx bx-laptop'></i> Personal Project</div>
+              <div class="description">
+                Developed a fully responsive blog platform using React, inspired by Medium. Includes features like post creation, editing, reading, and search functionality, with clean UI and smooth navigation.
+              </div>
+              <div class="skills-list">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Tailwind CSS</span>
+                <span class="skill-tag">Routing</span>
+              </div>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="education-category animate__animated animate__fadeIn animate__delay-6s">
+          <h2><i class='bx bxs-wrench'></i> Skills & Tools</h2>
+          <ul class="education-list">
+            <li class="education-item">
+              <h3>Technical Skills</h3>
+              <div class="skills-list">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript (ES6+)</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Responsive Design</span>
+                <span class="skill-tag">UI/UX Principles</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">VS Code</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+
+    <script>
+      
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+      
+     
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+      
+     
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+   
+      function animateOnScroll() {
+        const elements = document.querySelectorAll('.animate__animated');
+        
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+          
+          if (elementPosition < screenPosition) {
+            const animationClass = element.classList[1];
+            element.classList.add(animationClass);
+          }
+        });
+      }
+      
+      window.addEventListener('load', animateOnScroll);
+      window.addEventListener('scroll', animateOnScroll);
+    </script>
   </body>
 </html>

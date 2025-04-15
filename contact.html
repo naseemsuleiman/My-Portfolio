@@ -1,91 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contact Naseem Suleiman - Professional Frontend Developer">
+    <title>Contact | Naseem Suleiman - Frontend Developer</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background: #ffb3c1;
-        }
-
-        .container {
-            background-color: #fff0f6;
-            width: 450px;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-            /* text-align: center; */
-            backdrop-filter: blur(10px);
-        }
-
-        h2 {
-            font-size: 40px;
-            margin-bottom: 25px;
-            color: #c2185b;
-            text-shadow: 2px 2px #ffb3c1;
-        }
-
-        .contact-info {
-            margin-top: 25px;
-            text-align: left;
-            justify-content: left;
-        }
-
-        .contact-info p {
-            margin-bottom: 10px;
-            font-size: 20px;
-        }
-
-        .contact-info i {
-            color: #c2185b;
-            margin-right: 10px;
-        }
-        a{
-            color: black;
-        }
-
+      :root {
+        --primary-color: #2a9d8f;
+        --secondary-color: #264653;
+        --accent-color: #e9c46a;
+        --dark-color: #212529;
+        --light-color: #f8f9fa;
+        --text-color: #495057;
+        --text-light: #6c757d;
+        --card-bg: rgba(255, 255, 255, 0.98);
+        --glass-effect: rgba(255, 255, 255, 0.15);
+        --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
       
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      body {
+        background-color: var(--light-color);
+        color: var(--text-color);
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+      
+      /* Navbar - Matching Homepage */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 5%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        transition: var(--transition);
+      }
+      
+      .navbar.scrolled {
+        padding: 15px 5%;
+        box-shadow: var(--shadow-md);
+      }
+      
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      
+      .logo-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+      }
+      
+      .logo-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+      
+      .nav-links li {
+        margin-left: 30px;
+        position: relative;
+      }
+      
+      .nav-links li a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 1rem;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-links li a .nav-icon {
+        display: none;
+      }
+      
+      .nav-links li a:hover {
+        color: var(--primary-color);
+      }
+      
+      .nav-links li a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        bottom: -5px;
+        left: 0;
+        transition: var(--transition);
+      }
+      
+      .nav-links li a:hover::after {
+        width: 100%;
+      }
+      
+      .nav-links li.active a {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+      
+      .nav-links li.active a::after {
+        width: 100%;
+      }
+      
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      
+      .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: var(--primary-color);
+        border-radius: 3px;
+        transition: var(--transition);
+      }
+      
+      .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+      
+      /* Contact Section */
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 150px 5% 80px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .contact-section {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 60px;
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition);
+        width: 100%;
+        max-width: 800px;
+      }
+      
+      .contact-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+      
+      .contact-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      
+      .contact-header h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .contact-header h1::after {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+      }
+      
+      .contact-header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .contact-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+      
+      .contact-info {
+        flex: 1;
+        min-width: 300px;
+      }
+      
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgba(42, 157, 143, 0.1);
+      }
+      
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(42, 157, 143, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+      
+      .contact-details h3 {
+        font-size: 1.2rem;
+        color: var(--dark-color);
+        margin-bottom: 5px;
+      }
+      
+      .contact-details p, 
+      .contact-details a {
+        color: var(--text-color);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+      
+      .contact-details a:hover {
+        color: var(--primary-color);
+      }
+      
+      .contact-form {
+        flex: 1;
+        min-width: 300px;
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--dark-color);
+        font-weight: 500;
+      }
+      
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+      
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+      }
+      
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+      
+      .btn {
+        display: inline-block;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
+      }
+      
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+      
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+      }
+      
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: white;
+        color: var(--primary-color);
+        border-radius: 50%;
+        font-size: 1.3rem;
+        text-decoration: none;
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .social-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        z-index: -1;
+        transform: scale(0);
+        transition: var(--transition);
+        border-radius: 50%;
+      }
+      
+      .social-link:hover {
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+      }
+      
+      .social-link:hover::before {
+        transform: scale(1);
+      }
+
+      /* Success Message Styles */
+      .success-message {
+        background: rgba(42, 157, 143, 0.1);
+        border-left: 4px solid var(--primary-color);
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: 20px;
+        animation: fadeIn 0.5s ease-in-out;
+        display: none;
+      }
+
+      .success-message i {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .success-message h3 {
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .success-message p {
+        color: var(--text-color);
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Loading State */
+      .btn.loading {
+        pointer-events: none;
+        opacity: 0.8;
+      }
+
+      .btn.loading i {
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .contact-header h1 {
+          font-size: 2.5rem;
+        }
+        
+        .contact-section {
+          padding: 40px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 20px 5%;
+        }
+        
+        .menu-toggle {
+          display: flex;
+        }
+        
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          max-width: 300px;
+          height: 100vh;
+          background: var(--card-bg);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          transition: var(--transition);
+          z-index: 1000;
+        }
+        
+        .nav-links.active {
+          right: 0;
+        }
+        
+        .nav-links li {
+          margin: 15px 0;
+        }
+        
+        .nav-links li a {
+          flex-direction: row;
+          gap: 10px;
+        }
+        
+        .nav-links li a .nav-icon {
+          display: block;
+        }
+        
+        .contact-header h1 {
+          font-size: 2.2rem;
+        }
+        
+        .contact-content {
+          flex-direction: column;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .contact-header h1 {
+          font-size: 1.8rem;
+        }
+        
+        .contact-section {
+          padding: 30px 20px;
+        }
+        
+        .contact-item {
+          flex-direction: column;
+        }
+        
+        .contact-icon {
+          margin-bottom: 15px;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <nav class="navbar">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="education.html">Education</a></li>
-          <li><a href="interests.html">Interests</a></li>
-          <li><a href="contact.html" >Contact</a></li>
-        </ul>
+      <a href="index.html" class="logo">
+        <i class='bx bx-code-alt logo-icon'></i>
+        <span class="logo-text">Naseem</span>
+      </a>
+      
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="index.html"><i class='bx bx-home nav-icon'></i> Home</a></li>
+        <li><a href="about.html"><i class='bx bx-user nav-icon'></i> About</a></li>
+        <li><a href="education.html"><i class='bx bx-book nav-icon'></i> Education</a></li>
+        <li><a href="interests.html"><i class='bx bx-heart nav-icon'></i> Interests</a></li>
+        <li class="active"><a href="contact.html"><i class='bx bx-envelope nav-icon'></i> Contact</a></li>
+      </ul>
     </nav>
 
-    <div class="container">
-        <h2>Contact Me</h2>
-        <div class="contact-info">
-            <p><i class="fas fa-user"></i><strong>Name:</strong> Naseem Suleiman</p><br>
-            <p><i class="fas fa-phone"></i><strong>Phone:</strong> <a href="tel:+25495614940">+254 95614940</a></p>
-            <i class="fas fa-envelope"></i><strong>Email:</strong> <a href="mailto:naseemsuleiman08@gmail.com">naseemsuleiman08@gmail.com</a><br><br>
-            <i class="fas fa-map-marker-alt"></i><strong>Location:</strong> 123 Street, Nairobi, Kenya <br><br>
-            <i class="fas fa-globe"></i><strong>Website:</strong> <a href="http://www.naseemsuleiman.com" target="_blank">www.naseemsuleiman.com</a> <br><br>
-            <i class="fas fa-linkedin"></i><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/naseemsuleiman" target="_blank">linkedin.com/in/naseemsuleiman</a><br><br>
-            <i class="fas fa-github"></i><strong>GitHub:</strong> <a href="https://github.com/naseemsuleiman" target="_blank">github.com/naseemsuleiman</a><br><br>
-            <p><i class="fas fa-info-circle"></i><strong>Availability:</strong> Open to freelance and full-time opportunities</p>
+    <div class="contact-container">
+      <div class="contact-section animate__animated animate__fadeIn">
+        <div class="contact-header">
+          <h1 class="animate__animated animate__fadeIn animate__delay-1s">Get In Touch</h1>
+          <p class="animate__animated animate__fadeIn animate__delay-2s">Have a project in mind or want to connect? Feel free to reach out!</p>
         </div>
+        
+        <div class="contact-content">
+          <div class="contact-info animate__animated animate__fadeIn animate__delay-3s">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class='bx bx-user'></i>
+              </div>
+              <div class="contact-details">
+                <h3>Name</h3>
+                <p>Naseem Suleiman</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class='bx bx-phone'></i>
+              </div>
+              <div class="contact-details">
+                <h3>Phone</h3>
+                <a href="tel:+25495614940">+254 95614940</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class='bx bx-envelope'></i>
+              </div>
+              <div class="contact-details">
+                <h3>Email</h3>
+                <a href="mailto:naseemsuleiman08@gmail.com">naseemsuleiman08@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class='bx bx-map'></i>
+              </div>
+              <div class="contact-details">
+                <h3>Location</h3>
+                <p>Nairobi, Kenya</p>
+              </div>
+            </div>
+            
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/smocha-ringoz-5695b0358/" class="social-link" aria-label="LinkedIn">
+                <i class='bx bxl-linkedin'></i>
+              </a>
+              <a href="https://github.com/" class="social-link" aria-label="GitHub">
+                <i class='bx bxl-github'></i>
+              </a>
+              <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" class="social-link" aria-label="Email">
+                <i class='bx bxl-gmail'></i>
+              </a>
+              <a href="https://www.instagram.com/_.naseeemmm/?hl=en" class="social-link" aria-label="Instagram">
+                <i class='bx bxl-instagram-alt'></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-form animate__animated animate__fadeIn animate__delay-4s">
+           
+            <div class="success-message" id="successMessage">
+              <i class='bx bx-check-circle'></i>
+              <h3>Message Sent Successfully!</h3>
+              <p>Thank you for contacting me. I'll get back to you soon.</p>
+            </div>
+
+            <form id="contactForm">
+                <input type="hidden" name="_subject" value="New contact from your portfolio">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+                  <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="email">Your Email</label>
+                  <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input type="text" id="subject" name="_subject" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="message">Your Message</label>
+                  <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn" id="submitBtn">
+                  <i class='bx bx-paper-plane'></i> Send Message
+                </button>
+              </form>
+            </div>
+        </div>
+      </div>
     </div>
-</body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        
+          const menuToggle = document.querySelector('.menu-toggle');
+          const navLinks = document.querySelector('.nav-links');
+          
+          if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+              menuToggle.classList.toggle('active');
+              navLinks.classList.toggle('active');
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+              link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+              });
+            });
+          }
+          
+         
+          const navbar = document.querySelector('.navbar');
+          if (navbar) {
+            window.addEventListener('scroll', function() {
+              navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+          }
+          
+          function animateOnScroll() {
+            document.querySelectorAll('.animate__animated').forEach(element => {
+              if (element.getBoundingClientRect().top < window.innerHeight / 1.3) {
+                element.classList.add(element.classList[1]);
+              }
+            });
+          }
+          window.addEventListener('load', animateOnScroll);
+          window.addEventListener('scroll', animateOnScroll);
+        
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+          contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (!submitBtn || !successMessage) return;
+            
+            const originalBtnContent = submitBtn.innerHTML;
+            
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="bx bx-loader bx-spin"></i> Sending...';
+            
+            try {
+              
+              const response = await fetch('https://formsubmit.co/ajax/naseemsuleiman08@gmail.com', {
+                method: 'POST',
+                headers: { 
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                  name: document.getElementById('name').value,
+                  email: document.getElementById('email').value,
+                  _subject: document.getElementById('subject').value,
+                  message: document.getElementById('message').value,
+                  _template: 'table',
+                  _captcha: 'false'
+                })
+              });
+
+              const result = await response.json();
+              
+              if (response.ok && result.success === "true") {
+                
+                contactForm.reset();
+                contactForm.style.display = 'none';
+                successMessage.style.display = 'block';
+              } else {
+                throw new Error(result.message || 'Submission failed');
+              }
+            } catch (error) {
+              console.error('Error:', error);
+              alert('Oops! Something went wrong. Please try again later or email me directly at naseemsuleiman08@gmail.com');
+            } finally {
+              
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalBtnContent;
+            }
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

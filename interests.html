@@ -3,156 +3,544 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interests</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="Naseem Suleiman's Interests - Professional Frontend Developer">
+    <title>Interests | Naseem Suleiman - Frontend Developer</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-      * {
-        box-sizing: border-box;
+      :root {
+        --primary-color: #2a9d8f;
+        --secondary-color: #264653;
+        --accent-color: #e9c46a;
+        --dark-color: #212529;
+        --light-color: #f8f9fa;
+        --text-color: #495057;
+        --text-light: #6c757d;
+        --card-bg: rgba(255, 255, 255, 0.98);
+        --glass-effect: rgba(255, 255, 255, 0.15);
+        --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       }
-      body {
-        min-height: 100vh;
-        background-image: linear-gradient(to bottom right, #ffafcc, #ffcad4);
-        color: #1e293b;
-        font-family: Arial, sans-serif;
+      
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
       }
-      .navbar ul {
+      
+      body {
+        background-color: var(--light-color);
+        color: var(--text-color);
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+      
+      /* Navbar - Matching Homepage */
+      .navbar {
         display: flex;
-        justify-content: center;
-        list-style: none;
-        background-color: #ffafcc;
-        padding: 10px 0;
-        border-radius: 10px;
-        margin: 20px auto;
-        max-width: 90%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 5%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        transition: var(--transition);
       }
-
-      .navbar ul li {
-        margin: 0 15px;
+      
+      .navbar.scrolled {
+        padding: 15px 5%;
+        box-shadow: var(--shadow-md);
       }
-
-      .navbar ul li a {
+      
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         text-decoration: none;
-        color: #1e293b;
-        font-size: 18px;
-        padding: 10px 20px;
-        background-color: #ffc3d8;
-        border-radius: 20px;
-        transition: background-color 0.3s;
       }
-
-      .navbar ul li a:hover {
-        background-color: #ffafcc;
+      
+      .logo-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
       }
-
-      .here {
-        width: 88%;
-        margin: auto;
-        padding: 30px 0px;
+      
+      .logo-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
-
-      article h1 {
-        font-size: 50px;
+      
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+      
+      .nav-links li {
+        margin-left: 30px;
+        position: relative;
+      }
+      
+      .nav-links li a {
+        text-decoration: none;
+        color: var(--text-color);
         font-weight: 500;
-        text-transform: uppercase;
-        color: #ff5c8a;
-        margin-top: 40px;
-        text-align: center;
-      }
-
-      article h1::after {
-        content: "";
-        height: 3px;
-        width: 225px;
-        background-color: #ff5c8a;
-        display: block;
-        margin: auto;
-      }
-
-      .section {
+        font-size: 1rem;
+        transition: var(--transition);
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 20px 0;
-        padding: 15px;
-        background-color: #fff0f6;
-        border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       }
-
-      .section img {
-        width: 300px;
-        height: 200px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        margin-bottom: 10px;
-        object-fit: cover;
+      
+      .nav-links li a .nav-icon {
+        display: none;
       }
-
-      .section h2 {
-        color: #ff5c8a;
-        font-size: 28px;
-        margin-bottom: 10px;
+      
+      .nav-links li a:hover {
+        color: var(--primary-color);
       }
-
-      .section p {
-        max-width: 600px;
+      
+      .nav-links li a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        bottom: -5px;
+        left: 0;
+        transition: var(--transition);
+      }
+      
+      .nav-links li a:hover::after {
+        width: 100%;
+      }
+      
+      .nav-links li.active a {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+      
+      .nav-links li.active a::after {
+        width: 100%;
+      }
+      
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      
+      .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: var(--primary-color);
+        border-radius: 3px;
+        transition: var(--transition);
+      }
+      
+      .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+      
+      /* Interests Section */
+      .interests-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 150px 5% 80px;
+      }
+      
+      .interests-header {
         text-align: center;
+        margin-bottom: 60px;
       }
-
-      .grid {
+      
+      .interests-header h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .interests-header h1::after {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+      }
+      
+      .interests-header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      
+      .interests-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
+        gap: 30px;
+      }
+      
+      .interest-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        position: relative;
+      }
+      
+      .interest-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+      }
+      
+      .interest-img-container {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+      }
+      
+      .interest-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+      
+      .interest-card:hover .interest-img {
+        transform: scale(1.05);
+      }
+      
+      .interest-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(42, 157, 143, 0.8), transparent);
         padding: 20px;
+        color: white;
+      }
+      
+      .interest-overlay h2 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+      
+      .interest-overlay i {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: var(--accent-color);
+      }
+      
+      .interest-content {
+        padding: 25px;
+      }
+      
+      .interest-content p {
+        color: var(--text-color);
+        margin-bottom: 15px;
+      }
+      
+      .interest-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      
+      .interest-tag {
+        background: rgba(42, 157, 143, 0.1);
+        color: var(--secondary-color);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+      
+      /* Animations */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .interests-header h1 {
+          font-size: 2.5rem;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 20px 5%;
+        }
+        
+        .menu-toggle {
+          display: flex;
+        }
+        
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          max-width: 300px;
+          height: 100vh;
+          background: var(--card-bg);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          transition: var(--transition);
+          z-index: 1000;
+        }
+        
+        .nav-links.active {
+          right: 0;
+        }
+        
+        .nav-links li {
+          margin: 15px 0;
+        }
+        
+        .nav-links li a {
+          flex-direction: row;
+          gap: 10px;
+        }
+        
+        .nav-links li a .nav-icon {
+          display: block;
+        }
+        
+        .interests-header h1 {
+          font-size: 2.2rem;
+        }
+        
+        .interests-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .interests-header h1 {
+          font-size: 1.8rem;
+        }
+        
+        .interest-img-container {
+          height: 180px;
+        }
       }
     </style>
   </head>
+
   <body>
     <nav class="navbar">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="education.html">Education</a></li>
-        <li><a href="interests.html" style="background-color: #ff5c8a;">Interests</a></li>
-        <li><a href="contact.html">Contact</a></li>
+      <a href="index.html" class="logo">
+        <i class='bx bx-code-alt logo-icon'></i>
+        <span class="logo-text">Naseem</span>
+      </a>
+      
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="index.html"><i class='bx bx-home nav-icon'></i> Home</a></li>
+        <li><a href="about.html"><i class='bx bx-user nav-icon'></i> About</a></li>
+        <li><a href="education.html"><i class='bx bx-book nav-icon'></i> Education</a></li>
+        <li class="active"><a href="interests.html"><i class='bx bx-heart nav-icon'></i> Interests</a></li>
+        <li><a href="contact.html"><i class='bx bx-envelope nav-icon'></i> Contact</a></li>
       </ul>
-    </nav><br><br><br>
+    </nav>
 
-    <article class="here">
-      <h1>My Interests</h1>
-      <div class="grid">
-        <div class="section">
-          <img src="travelling.jpg" alt="Traveling" />
-          <h2>Traveling</h2>
-          <p>I love exploring new places and experiencing different cultures.</p>
+    <div class="interests-container">
+      <div class="interests-header animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__fadeIn animate__delay-1s">My Interests</h1>
+        <p class="animate__animated animate__fadeIn animate__delay-2s">Beyond coding - exploring my passions and hobbies</p>
+      </div>
+      
+      <div class="interests-grid">
+        <div class="interest-card animate__animated animate__fadeIn animate__delay-3s">
+          <div class="interest-img-container">
+            <img src="travelling.jpg" alt="Traveling" class="interest-img">
+            <div class="interest-overlay">
+              <i class='bx bxs-plane-alt'></i>
+              <h2>Traveling</h2>
+            </div>
+          </div>
+          <div class="interest-content">
+            <p>I love exploring new places and experiencing different cultures. Traveling expands my perspective and inspires creativity in my work.</p>
+            <div class="interest-tags">
+              <span class="interest-tag">Adventure</span>
+              <span class="interest-tag">Culture</span>
+              <span class="interest-tag">Exploration</span>
+            </div>
+          </div>
         </div>
-
-        <div class="section">
-          <img src="photo.jpg"Photography" />
-          <h2>Photography</h2>
-          <p>Capturing moments through the lens is my passion.</p>
+        
+        <div class="interest-card animate__animated animate__fadeIn animate__delay-4s">
+          <div class="interest-img-container">
+            <img src="photo.jpg" alt="Photography" class="interest-img">
+            <div class="interest-overlay">
+              <i class='bx bxs-camera'></i>
+              <h2>Photography</h2>
+            </div>
+          </div>
+          <div class="interest-content">
+            <p>Capturing moments through the lens is my passion. Photography helps me appreciate details and develop an eye for design.</p>
+            <div class="interest-tags">
+              <span class="interest-tag">Landscape</span>
+              <span class="interest-tag">Portrait</span>
+              <span class="interest-tag">Composition</span>
+            </div>
+          </div>
         </div>
-
-        <div class="section">
-          <img src="cooking.jpg" alt="Cooking" />
-          <h2>Cooking</h2>
-          <p>Experimenting with recipes and flavors brings me joy.</p>
+        
+        <div class="interest-card animate__animated animate__fadeIn animate__delay-5s">
+          <div class="interest-img-container">
+            <img src="cooking.jpg" alt="Cooking" class="interest-img">
+            <div class="interest-overlay">
+              <i class='bx bxs-bowl-hot'></i>
+              <h2>Cooking</h2>
+            </div>
+          </div>
+          <div class="interest-content">
+            <p>Experimenting with recipes and flavors brings me joy. Cooking is like coding - it requires precision, creativity, and patience.</p>
+            <div class="interest-tags">
+              <span class="interest-tag">Recipes</span>
+              <span class="interest-tag">International Cuisine</span>
+              <span class="interest-tag">Baking</span>
+            </div>
+          </div>
         </div>
-
-        <div class="section">
-          <img src="reading.jpg" alt="Reading" />
-          <h2>Reading</h2>
-          <p>Diving into books expands my knowledge and imagination.</p>
+        
+        <div class="interest-card animate__animated animate__fadeIn animate__delay-6s">
+          <div class="interest-img-container">
+            <img src="reading.jpg" alt="Reading" class="interest-img">
+            <div class="interest-overlay">
+              <i class='bx bxs-book'></i>
+              <h2>Reading</h2>
+            </div>
+          </div>
+          <div class="interest-content">
+            <p>Diving into books expands my knowledge and imagination. I particularly enjoy tech literature, biographies, and science fiction.</p>
+            <div class="interest-tags">
+              <span class="interest-tag">Tech</span>
+              <span class="interest-tag">Biographies</span>
+              <span class="interest-tag">Sci-Fi</span>
+            </div>
+          </div>
         </div>
-
-        <div class="section">
-          <img src="coding.jpg" alt="Coding" />
-          <h2>Coding</h2>
-          <p>I enjoy solving problems and building innovative solutions through programming.</p>
+        
+        <div class="interest-card animate__animated animate__fadeIn animate__delay-7s">
+          <div class="interest-img-container">
+            <img src="coding.jpg" alt="Coding" class="interest-img">
+            <div class="interest-overlay">
+              <i class='bx bx-code-alt'></i>
+              <h2>Coding</h2>
+            </div>
+          </div>
+          <div class="interest-content">
+            <p>I enjoy solving problems and building innovative solutions through programming. Side projects let me explore new technologies.</p>
+            <div class="interest-tags">
+              <span class="interest-tag">Web Development</span>
+              <span class="interest-tag">Open Source</span>
+              <span class="interest-tag">Problem Solving</span>
+            </div>
+          </div>
+        </div>
+        
+      
         </div>
       </div>
-    </article>
+    </div>
+
+    <script>
+     
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+      
+   
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+      
+     
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+     
+      function animateOnScroll() {
+        const elements = document.querySelectorAll('.animate__animated');
+        
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+          
+          if (elementPosition < screenPosition) {
+            const animationClass = element.classList[1];
+            element.classList.add(animationClass);
+          }
+        });
+      }
+      
+      window.addEventListener('load', animateOnScroll);
+      window.addEventListener('scroll', animateOnScroll);
+    </script>
   </body>
 </html>
