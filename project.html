@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Naseem Suleiman's Projects - Professional Frontend Developer">
+    <title>Projects | Naseem Suleiman - Frontend Developer</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+      :root {
+        --primary-color: #2a9d8f;
+        --primary-dark: #1d7a6e;
+        --secondary-color: #264653;
+        --accent-color: #e9c46a;
+        --accent-dark: #d4b15f;
+        --dark-color: #212529;
+        --light-color: #f8f9fa;
+        --text-color: #495057;
+        --text-light: #6c757d;
+        --card-bg: rgba(255, 255, 255, 0.98);
+        --glass-effect: rgba(255, 255, 255, 0.15);
+        --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        --border-radius: 12px;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      body {
+        background-color: #f5f7fa;
+        color: var(--text-color);
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+      
+     
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 5%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+        transition: var(--transition);
+      }
+      
+      .navbar.scrolled {
+        padding: 15px 5%;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      
+      .logo-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        transition: var(--transition);
+      }
+      
+      .logo:hover .logo-icon {
+        transform: rotate(15deg);
+      }
+      
+      .logo-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: var(--transition);
+      }
+      
+      .logo:hover .logo-text {
+        background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+      }
+      
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+      
+      .nav-links li {
+        margin-left: 30px;
+        position: relative;
+      }
+      
+      .nav-links li a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 1rem;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-links li a .nav-icon {
+        display: none;
+      }
+      
+      .nav-links li a:hover {
+        color: var(--primary-color);
+      }
+      
+      .nav-links li a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        bottom: -5px;
+        left: 0;
+        transition: var(--transition);
+      }
+      
+      .nav-links li a:hover::after {
+        width: 100%;
+      }
+      
+      .nav-links li.active a {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+      
+      .nav-links li.active a::after {
+        width: 100%;
+      }
+      
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      
+      .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: var(--primary-color);
+        border-radius: 3px;
+        transition: var(--transition);
+      }
+      
+      .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+      
+     
+      .projects-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 150px 5% 80px;
+      }
+      
+      .projects-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      
+      .projects-header h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .projects-header h1::after {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+      }
+      
+      .projects-header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+      
+      .project-card {
+        background: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+      }
+      
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+      
+      .project-image-container {
+        position: relative;
+        overflow: hidden;
+        height: 220px;
+      }
+      
+      .project-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      
+      .project-card:hover .project-image {
+        transform: scale(1.05);
+      }
+      
+      .project-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        z-index: 2;
+      }
+      
+      .project-content {
+        padding: 25px;
+        position: relative;
+      }
+      
+      .project-title {
+        font-size: 1.4rem;
+        color: var(--dark-color);
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+      
+      .project-description {
+        color: var(--text-color);
+        margin-bottom: 20px;
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+      
+      .project-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 25px;
+      }
+      
+      .skill-tag {
+        background: rgba(42, 157, 143, 0.1);
+        color: var(--secondary-color);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid rgba(42, 157, 143, 0.2);
+      }
+      
+      .project-links {
+        display: flex;
+        gap: 15px;
+      }
+      
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 22px;
+        border-radius: 6px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 0.9rem;
+        flex: 1;
+        text-align: center;
+      }
+      
+      .project-link.github {
+        background: var(--dark-color);
+        color: white;
+        box-shadow: 0 2px 5px rgba(33, 37, 41, 0.2);
+      }
+      
+      .project-link.github:hover {
+        background: #343a40;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(33, 37, 41, 0.3);
+      }
+      
+      .project-link.live {
+        background: var(--primary-color);
+        color: white;
+        box-shadow: 0 2px 5px rgba(42, 157, 143, 0.3);
+      }
+      
+      .project-link.live:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(42, 157, 143, 0.4);
+      }
+      
+      .project-link i {
+        margin-right: 8px;
+        font-size: 1rem;
+      }
+      
+      
+      .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(42, 157, 143, 0.03) 0%, rgba(233, 196, 106, 0.02) 100%);
+        z-index: -1;
+      }
+      
+      .project-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+      }
+      
+      .project-card:hover::after {
+        transform: scaleX(1);
+      }
+      
+     
+      @media (max-width: 1200px) {
+        .projects-grid {
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+      }
+      
+      @media (max-width: 992px) {
+        .projects-header h1 {
+          font-size: 2.5rem;
+        }
+        
+        .project-image-container {
+          height: 200px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 20px 5%;
+        }
+        
+        .menu-toggle {
+          display: flex;
+        }
+        
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          max-width: 300px;
+          height: 100vh;
+          background: var(--card-bg);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          transition: var(--transition);
+          z-index: 1000;
+        }
+        
+        .nav-links.active {
+          right: 0;
+        }
+        
+        .nav-links li {
+          margin: 15px 0;
+        }
+        
+        .nav-links li a {
+          flex-direction: row;
+          gap: 10px;
+        }
+        
+        .nav-links li a .nav-icon {
+          display: block;
+        }
+        
+        .projects-header h1 {
+          font-size: 2.2rem;
+        }
+        
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .projects-header h1 {
+          font-size: 2rem;
+        }
+        
+        .projects-header p {
+          font-size: 1rem;
+        }
+        
+        .project-content {
+          padding: 20px;
+        }
+        
+        .project-links {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <i class='bx bx-code-alt logo-icon'></i>
+        <span class="logo-text">Naseem</span>
+      </a>
+      
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="index.html"><i class='bx bx-home nav-icon'></i> Home</a></li>
+        <li><a href="about.html"><i class='bx bx-user nav-icon'></i> About</a></li>
+        <li><a href="education.html"><i class='bx bx-book nav-icon'></i> Education</a></li>
+        <li class="active"><a href="projects.html"><i class='bx bx-code-block nav-icon'></i> Projects</a></li>
+        <li><a href="interests.html"><i class='bx bx-heart nav-icon'></i> Interests</a></li>
+        <li><a href="contact.html"><i class='bx bx-envelope nav-icon'></i> Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="projects-container">
+      <div class="projects-header">
+        <h1 class="animate__animated animate__fadeIn animate__delay-1s">My Projects</h1>
+        <p class="animate__animated animate__fadeIn animate__delay-2s">Showcasing my professional frontend development work</p>
+      </div>
+      
+      <div class="projects-grid">
+        
+        <div class="project-card animate__animated animate__fadeIn animate__delay-3s">
+          <div class="project-image-container">
+            
+            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Grand Oasis Hotel" class="project-image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Grand Oasis Hotel</h3>
+            <p class="project-description">
+              A luxury hotel booking platform with responsive design, room selection, and online reservation system. Built with modern CSS techniques and vanilla JavaScript for optimal performance.
+            </p>
+            <div class="project-skills">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Responsive</span>
+              <span class="skill-tag">UI/UX</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/naseemsuleiman/mywebsite" class="project-link github" target="_blank">
+                <i class='bx bxl-github'></i> View Code
+              </a>
+              <a href="https://naseemsuleiman.github.io/mywebsite/" class="project-link live" target="_blank">
+                <i class='bx bx-link-external'></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="project-card animate__animated animate__fadeIn animate__delay-4s">
+          <div class="project-image-container">
+            <span class="project-badge">Interactive</span>
+            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Trivia Game" class="project-image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Trivia Challenge</h3>
+            <p class="project-description">
+              An engaging trivia game with multiple categories and difficulty levels. Features real-time scoring, animations, and API integration with the Open Trivia Database.
+            </p>
+            <div class="project-skills">
+             
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">API</span>
+              <span class="skill-tag">State Management</span>
+              <span class="skill-tag">CSS Modules</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/naseemsuleiman/Trivia-Game" class="project-link github" target="_blank">
+                <i class='bx bxl-github'></i> View Code
+              </a>
+              <a href="https://naseemsuleiman.github.io/Trivia-Game/landing.html" class="project-link live" target="_blank">
+                <i class='bx bx-link-external'></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="project-card animate__animated animate__fadeIn animate__delay-5s">
+          <div class="project-image-container">
+          
+            <span class="project-badge">Featured</span>
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Inkify Blog" class="project-image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Inkify Blog Platform</h3>
+            <p class="project-description">
+              A Medium-inspired blogging platform with rich text editing, user authentication, and search functionality. Built with React and Firebase for a seamless user experience.
+            </p>
+            <div class="project-skills">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Firebase</span>
+              <span class="skill-tag">Tailwind CSS</span>
+              <span class="skill-tag">Authentication</span>
+              <span class="skill-tag">CRUD</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/naseemsuleiman/Myblog" class="project-link github" target="_blank">
+                <i class='bx bxl-github'></i> View Code
+              </a>
+              <a href="https://myblog-7ufjav0nb-naseems-projects-20034b0c.vercel.app/" class="project-link live" target="_blank">
+                <i class='bx bx-link-external'></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+        
+       
+        <div class="project-card animate__animated animate__fadeIn animate__delay-4s">
+            <div class="project-image-container">
+              <span class="project-badge">Productivity</span>
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Todo App" class="project-image">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">TaskMaster Todo App</h3>
+              <p class="project-description">
+                A feature-rich todo application with task categorization, due dates, priority levels, and local storage.
+              </p>
+              <div class="project-skills">
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Local Storage</span>
+                <span class="skill-tag">Material UI</span>
+                <span class="skill-tag">CRUD</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/naseemsuleiman/todo-app" class="project-link github" target="_blank">
+                  <i class='bx bxl-github'></i> View Code
+                </a>
+                <a href="https://todo-gb9he0l6c-naseems-projects-20034b0c.vercel.app/" class="project-link live" target="_blank">
+                  <i class='bx bx-link-external'></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          
+        
+  
+          
+          <div class="project-card animate__animated animate__fadeIn">
+            <div class="project-image-container">
+              <span class="project-badge">E-commerce</span>
+              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Food Delivery App" class="project-image">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">FoodExpress Delivery</h3>
+              <p class="project-description">
+                Food ordering platform with restaurant listings, cart functionality, and mock checkout process.
+              </p>
+              <div class="project-skills">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Redux</span>
+                <span class="skill-tag">Firebase</span>
+                <span class="skill-tag">Stripe API</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/naseemsuleiman/delivery" class="project-link github" target="_blank">
+                  <i class='bx bxl-github'></i> View Code
+                </a>
+                <a href="https://delivery-qa8lrgxzl-naseems-projects-20034b0c.vercel.app/" class="project-link live" target="_blank">
+                  <i class='bx bx-link-external'></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          
+          <div class="project-card animate__animated animate__fadeIn">
+            <div class="project-image-container">
+              <span class="project-badge">UI/UX</span>
+              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Wizard Form" class="project-image">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Multi-Step Wizard Form</h3>
+              <p class="project-description">
+                Dynamic form with progress tracking, validation, and conditional logic across multiple steps.
+              </p>
+              <div class="project-skills">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Formik</span>
+                <span class="skill-tag">Yup</span>
+                <span class="skill-tag">Animation</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/naseemsuleiman/Wizard-form" class="project-link github" target="_blank">
+                  <i class='bx bxl-github'></i> View Code
+                </a>
+                <a href="https://wizard-form-onyrmyvft-naseems-projects-20034b0c.vercel.app/" class="project-link live" target="_blank">
+                  <i class='bx bx-link-external'></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          
+          <div class="project-card animate__animated animate__fadeIn">
+            <div class="project-image-container">
+              <span class="project-badge">Game</span>
+              <img src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Rock Paper Scissors" class="project-image">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Rock Paper Scissors Pro</h3>
+              <p class="project-description">
+                Interactive game with score tracking, animations, and both player vs computer and multiplayer modes.
+              </p>
+              <div class="project-skills">
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">CSS Animations</span>
+                <span class="skill-tag">Game Logic</span>
+                <span class="skill-tag">Local Storage</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/naseemsuleiman/Rock-Paper-Scissors" class="project-link github" target="_blank">
+                  <i class='bx bxl-github'></i> View Code
+                </a>
+                <a href="https://naseemsuleiman.github.io/Rock-Paper-Scissors/" class="project-link live" target="_blank">
+                  <i class='bx bx-link-external'></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+  
+         
+          <div class="project-card animate__animated animate__fadeIn">
+            <div class="project-image-container">
+              <span class="project-badge">API</span>
+              <img src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Weather App" class="project-image">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Weather Forecast</h3>
+              <p class="project-description">
+                Real-time weather application with 5-day forecast, location search, and dynamic background based on conditions.
+              </p>
+              <div class="project-skills">
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">OpenWeather API</span>
+                <span class="skill-tag">Geolocation</span>
+                <span class="skill-tag">Chart.js</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/naseemsuleiman/Weather" class="project-link github" target="_blank">
+                  <i class='bx bxl-github'></i> View Code
+                </a>
+                <a href="https://naseemsuleiman.github.io/Weather/" class="project-link live" target="_blank">
+                  <i class='bx bx-link-external'></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          
+          <div class="project-card animate__animated animate__fadeIn">
+            <div class="project-image-container">
+              <span class="project-badge">Productivity</span>
+              <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Event Calendar" class="project-image">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Event Scheduler</h3>
+              <p class="project-description">
+                Interactive calendar with drag-and-drop events, reminders, and integration with Google Calendar API.
+              </p>
+              <div class="project-skills">
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">FullCalendar</span>
+                <span class="skill-tag">Firebase</span>
+                <span class="skill-tag">Drag & Drop</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/naseemsuleiman/Event-Calendar" class="project-link github" target="_blank">
+                  <i class='bx bxl-github'></i> View Code
+                </a>
+                <a href="https://naseemsuleiman.github.io/Event-Calendar/" class="project-link live" target="_blank">
+                  <i class='bx bx-link-external'></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+  
+         
+      </div>
+    </div>
+    
+
+    <script>
+      
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+      });
+      
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          if(link.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if(target) {
+              window.scrollTo({
+                top: target.offsetTop - 100,
+                behavior: 'smooth'
+              });
+            }
+          }
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+      
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        
+      
+        const elements = document.querySelectorAll('.animate__animated');
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.2;
+          
+          if (elementPosition < screenPosition) {
+            const animationClass = element.classList[1];
+            element.classList.add(animationClass);
+          }
+        });
+      });
+      
+      
+      window.addEventListener('load', function() {
+        const elements = document.querySelectorAll('.animate__animated');
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.2;
+          
+          if (elementPosition < screenPosition) {
+            const animationClass = element.classList[1];
+            element.classList.add(animationClass);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
